@@ -1,0 +1,84 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                
+                <!-- Username Field -->
+                <div class="form-group">
+                    <label for="id_username">Username</label>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        id="id_username" 
+                        class="form-control"
+                        required 
+                        maxlength="150"
+                        placeholder="Letters, digits, and @/./+/-/_ only."
+                    >
+                    <small class="form-text text-muted">
+                        Required. 150 characters or fewer.
+                    </small>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="id_email">Email</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="id_email" 
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="id_password1">Password</label>
+                    <input 
+                        type="password" 
+                        name="password1" 
+                        id="id_password1" 
+                        class="form-control"
+                        required
+                    >
+                    <small class="form-text text-muted">
+                        <ul>
+                            <li>Your password can't be too similar to your other personal information.</li>
+                            <li>Your password must contain at least 8 characters.</li>
+                            <li>Your password can't be a commonly used password.</li>
+                            <li>Your password can't be entirely numeric.</li>
+                        </ul>
+                    </small>
+                </div>
+
+                <!-- Password Confirmation -->
+                <div class="form-group">
+                    <label for="id_password2">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        name="password2" 
+                        id="id_password2" 
+                        class="form-control"
+                        required
+                    >
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+            </div>
+        </form>
+
+        <!-- Login Link -->
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a href="/login/">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
